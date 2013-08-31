@@ -73,7 +73,8 @@ module Backup
           key = File.join(remote_path, remote_file)
           res = ::Qiniu::RS.upload_file :uptoken            => upload_token,
                  :file               => File.join(Config.tmp_path, local_file),
-                 :key                => key,
+                 # :key                => key,
+                 :key                => 'haoqicat_backup',
                  :bucket             => bucket,
                  :enable_crc32_check => true
           raise "upload '#{local_file}' failed" if res == false
