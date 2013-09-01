@@ -70,11 +70,15 @@ module Backup
           Logger.info "[transfer_by_secret] #{storage_name} started transferring " +
               "'#{ local_file }'."
           upload_token = ::Qiniu::RS.generate_upload_token :scope => bucket
-          key = File.join(remote_path, remote_file)
+          # qiniu do not support sub direcctory, so change / to -
+          # key = File.join(remote_path, remote_file)
+          key = File.join(remote_path, remote_file).split('/').join('-')
+          if key[0] == '-'
+            key[0] = ''
+          end
           res = ::Qiniu::RS.upload_file :uptoken            => upload_token,
                  :file               => File.join(Config.tmp_path, local_file),
-                 # :key                => key,
-                 :key                => 'haoqicat_backup',
+                 :key                => key,
                  :bucket             => bucket,
                  :enable_crc32_check => true
           raise "upload '#{local_file}' failed" if res == false
