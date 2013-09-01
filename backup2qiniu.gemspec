@@ -2,11 +2,11 @@
 require File.expand_path('../lib/backup2qiniu/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["LI Daobing"]
-  gem.email         = ["lidaobing@gmail.com"]
-  gem.description   = %q{backup to qiniutek.com}
-  gem.summary       = %q{backup to qiniutek.com}
-  gem.homepage      = "https://github.com/lidaobing/backup2qiniu"
+  gem.authors       = ["Liu Jiyang"]
+  gem.email         = ["2411mail@gmail.com"]
+  gem.description   = %q{backup to qiniu.com}
+  gem.summary       = %q{backup to qiniu.com}
+  gem.homepage      = "https://github.com/luckyyang/backup2qiniu"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
